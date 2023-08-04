@@ -1,22 +1,18 @@
 import React from "react";
 import getData from "../utils/getData";
-
-interface Posts {
-  id: number;
-  user_id: number;
-  title: string;
-  body: string;
-}
+import Link from "next/link";
+import { Posts } from "../utils/interfaces";
 
 export default async function Page() {
   const posts: Posts[] = await getData("posts");
 
-  console.log(posts);
-
   return (
     <div>
       {posts?.map((item) => (
-        <p key={item.id}>{item.title}</p>
+        <div key={item.id}>
+          <p>{item.title}</p>
+          <Link href={`/blog/${item.id}`}>Read more</Link>
+        </div>
       ))}
     </div>
   );
