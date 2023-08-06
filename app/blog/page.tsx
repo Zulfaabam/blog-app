@@ -7,13 +7,16 @@ export default async function Page() {
   const posts: Posts[] = await getData("posts");
 
   return (
-    <div>
-      {posts?.map((item) => (
-        <div key={item.id}>
-          <p>{item.title}</p>
-          <Link href={`/blog/${item.id}`}>Read more</Link>
-        </div>
-      ))}
-    </div>
+    <>
+      <div className="max-w-5xl mx-auto border mt-4">
+        <h1 className="text-4xl font-semibold mb-4">Blog</h1>
+        {posts?.map((item) => (
+          <div key={item.id}>
+            <p>{item.title}</p>
+            <Link href={`/blog/${item.id}`}>Read more</Link>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
